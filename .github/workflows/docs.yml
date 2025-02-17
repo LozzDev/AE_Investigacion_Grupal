@@ -1,0 +1,20 @@
+name: Generate Documentation
+on: [push]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate HTML Docs
+        run: |
+          npm install -g jsdoc
+          jsdoc src -r -d docs
+          
+      - name: Create PDF from Markdown
+        run: |
+          npm install -g md-to-pdf
+          md-to-pdf docs/git.md --output docs/git-guide.pdf
+          md-to-pdf docs/formatos.md --output docs/formatos-guide.pdf

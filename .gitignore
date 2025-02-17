@@ -1,0 +1,6 @@
+# Archivos ignorados
+node_modules/
+*.pdf
+.env
+*.log
+.DS_Store
